@@ -13,6 +13,7 @@
                             {{ session('status') }}
                         </div>
                     @endif
+                   Hola,puedes seleccionar los jugadores en el menu de la izquierda y seguir las indicaciones.
                 </div>
             </div>
         </div>

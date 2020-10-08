@@ -10,27 +10,45 @@
                         <div class="card-header">
                             <h4 class="card-title">Jugadores</h4>
                         </div>
+                        @if(session("mensaje"))
+                            <div class="notification is-danger">
+                                {{session('mensaje')}}
+                            </div>
+                        @endif
                         <div class="card-header">
-                            <h4 class="card-title">En la Lista se muestran todos los jugadores y el simbolo correspondiente.</h4>
+                            <h4 class="card-title">Rellene el nombre de los jugadores y el simbolo correspondiente.</h4>
                         </div>
-                        <div class="card-body collapse in">
-                            <div class="card-block">
-                                <div class="list-group">
-                                    <a href="#" class="list-group-item active">
-                                        Nombres
-                                    </a>
+                        <form class="form" method="POST">
+                            {{csrf_field()}}
+                            <div class="row">
+                                <div class="col-md-6 offset-md-3">
+                                    <div class="form-body">
+                                        <div class="form-group">
+                                            <label for="eventInput1">Nombres Jugadores</label>
+                                            <input  id="eventInput1" class="form-control" placeholder="primer jugador" name="jugador_1" value="{{old('jugador_1')}}" required>
+                                        </div>
 
-                                    <ul class="list-group">
-                                        @foreach($lists as $list)
-                                            <a  class="list-group-item list-group-item-action">
-                                                <span class="tag tag-primary tag-pill float-xs-right">{{$list['simbolo']}}</span>
-                                                {{$list['name']}}
-                                            </a>
-                                        @endforeach
-                                    </ul>
+                                        <div class="form-group">
+                                            <label for="apellido">Segundo de la loteria</label>
+                                            <input  id="eventInput2" class="form-control" placeholder="segundo jugador" name="jugador_2"  value="{{old('jugador_2')}}" required>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="simbolo">Simbolo Jugador 1</label>
+                                           <select name="simbolo" class="form-control">
+                                               <option value="0">0</option>
+                                               <option value="1">X</option>
+                                           </select>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
+
+                            <div class="form-actions center">
+                                <button type="submit" class="btn btn-primary">
+                                    <i class="icon-check2"></i> Comenzar Juego
+                                </button>
+                            </div>
+                        </form>
                     </div>
                 </div>
             </div>

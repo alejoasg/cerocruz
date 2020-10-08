@@ -18,4 +18,9 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
-Route::get('/jugadores','HomeController@players');
+Route::get('/jugadores','GameController@players');
+Route::post('/jugadores','GameController@storeplay');
+Route::get('/partidas','GameController@savegames');
+Route::get('/juego',["as" => "gameplay", "uses" => "GameController@tablero"]);
+Route::post('/juego','GameController@playing');
+

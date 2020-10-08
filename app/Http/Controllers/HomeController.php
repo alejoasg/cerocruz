@@ -25,12 +25,5 @@ class HomeController extends Controller
     {
         return view('home');
     }
-   /*
-    *
-    */
-    public function players() {
 
-        $lists = array(['name'=>"Lachy",'simbolo'=>"X"],['name'=>"segundo",'simbolo'=>"0"]);
-        return view('play')->with(compact('lists'));
-    }
 }

@@ -71,9 +71,7 @@
               <li class="dropdown dropdown-user nav-item"><a href="#" data-toggle="dropdown" class="dropdown-toggle nav-link dropdown-user-link"><span class="avatar avatar-online">
                <img src="{!! asset('app-assets/images/portrait/small/avatar-s-1.png')!!}" alt="avatar"><i></i></span><span class="user-name">{{ Auth::user()->name }}</span></a>
 
-                <div class="dropdown-menu dropdown-menu-right"><a href="#" class="dropdown-item"><i class="icon-head"></i> Edit Profile</a><a href="#" class="dropdown-item"><i class="icon-calendar5"></i> Calender</a>
-
-
+                <div class="dropdown-menu dropdown-menu-right">
                   <div class="dropdown-divider"></div>
                   <a href="{{ route('logout') }}" class="dropdown-item" onclick="event.preventDefault();document.getElementById('logout-form').submit();"><i class="icon-power3"></i>
                     Desloguearse
@@ -130,5 +128,6 @@
     <!-- END ROBUST JS-->
     <!-- BEGIN PAGE LEVEL JS-->
     <!-- END PAGE LEVEL JS-->
+   @yield('scripts')
   </body>
 </html>

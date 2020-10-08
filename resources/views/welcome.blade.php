@@ -13,6 +13,7 @@
                                 {{ session('status') }}
                             </div>
                         @endif
+                            Ingrese a la aplicación mediante o registrese para su uso.
                     </div>
                 </div>
             </div>
