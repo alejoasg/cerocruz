@@ -1,10 +1,13 @@
 $(function (){
-    $('[data-turno]').on('click',MostrarXoCruz)
+    $('[data-turno]').on('click',MostrarXoCero)
 });
-function MostrarXoCruz() {
+function MostrarXoCero() {
    var turno= $(this).data('turno');
    if(turno==1)
    {
-       $(this).children().attr("src","");
+       $(this).val('X');
+   }else
+   {
+       $(this).val('O');
    }
 }
