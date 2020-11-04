@@ -19,6 +19,8 @@
                         </li>
                         <li @if(request()->is('tablero')) class="active" @endif><a href="{{ url('/juego') }}" data-i18n="nav.dash.main" class="menu-item">A Jugar</a>
                         </li>
+                        <li @if(request()->is('conexion')) class="active" @endif><a href="{{ url('/conexion') }}" data-i18n="nav.dash.main" class="menu-item">Coste Mínimo Transporte</a>
+                        </li>
                     </ul>
                 </li>
             </ul>

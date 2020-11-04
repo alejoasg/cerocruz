@@ -90,33 +90,41 @@ class  GameService
         $arraypos= array_keys($request);
         $valor=$request[$arraypos[1]];
         $juego=$_SESSION['MiArreglo'];
-        $newTablero=self::crearMatrizdeJuego($juego['tablero'],$arraypos[1],$valor);
-        $players=GamesRepository::ultimosJugadoresRepository();
-        $ganador="";
-        $next=null;
-        switch (self::CheckWinner($newTablero,$juego['nextplay']))
+        $players = GamesRepository::ultimosJugadoresRepository();
+        $checkSame=self::CheckTheSame($juego,$arraypos[1],$players);
+        if($checkSame["same"])
         {
-            case "X":
-                $ganador=$players->jugador_1;
-                $mensaje = "Ha ganado el jugador " . $ganador . ".Felicidades";
-                break;
-            case "O":
-                $ganador=$players->jugador_2;
-                $mensaje = "Ha ganado el jugador " . $ganador . ".Felicidades";
-                break;
-            case "E":
-                $ganador="empate";
-                $mensaje = "El juego ha quedado empatado.Buena Partida";
-                break;
-            default:
-                $jugador= $juego['nextplay']==1?$players->jugador_2:$players->jugador_1;
-                $next=$juego['nextplay']==1?2:1;
-                $mensaje="Le corresponde el turno al jugador ".$jugador;
-                break;
+               $result = array("juego" => $juego,
+               "same" => $checkSame["same"],
+               "mensaje" => $checkSame["mensaje"]);
         }
-        $juego=self::BuildGame($players,$newTablero,$ganador,$next);
-        $result=array("juego"=>$juego,"mensaje"=>$mensaje);
-
+        else
+        {
+            $newTablero = self::crearMatrizdeJuego($juego['tablero'], $arraypos[1], $valor);
+            $ganador = "";
+            $next = null;
+            switch (self::CheckWinner($newTablero, $juego['nextplay'])) {
+                case "X":
+                    $ganador = $players->jugador_1;
+                    $mensaje = "Ha ganado el jugador " . $ganador . ".Felicidades";
+                    break;
+                case "O":
+                    $ganador = $players->jugador_2;
+                    $mensaje = "Ha ganado el jugador " . $ganador . ".Felicidades";
+                    break;
+                case "E":
+                    $ganador = "empate";
+                    $mensaje = "El juego ha quedado empatado.Buena Partida";
+                    break;
+                default:
+                    $jugador = $juego['nextplay'] == 1 ? $players->jugador_2 : $players->jugador_1;
+                    $next = $juego['nextplay'] == 1 ? 2 : 1;
+                    $mensaje = "Le corresponde el turno al jugador " . $jugador;
+                    break;
+            }
+            $juego = self::BuildGame($players, $newTablero, $ganador, $next);
+            $result = array("juego" => $juego, "mensaje" => $mensaje, "same" => false);
+        }
         return $result;
     }
 
@@ -185,6 +193,16 @@ class  GameService
         return $tablero;
     }
 
+    public static function CheckTheSame($juego,$arraypos,$players)
+    {
+        $tablero=$juego["tablero"];
+        $check=$tablero[$arraypos]=="X" || $tablero[$arraypos]=="O";
+        $jugador = $juego['nextplay'] == 1 ? $players->jugador_1 : $players->jugador_2;
+        $mensaje = "Le corresponde el turno al jugador " . $jugador.
+            ". Por favor ".$jugador. " seleccione una casilla que no se encuentre ocupada.";
+        $result = array("same" => $check,"mensaje" => $mensaje);
+        return $result;
+    }
 
 }
 

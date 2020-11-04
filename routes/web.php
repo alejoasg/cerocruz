@@ -24,3 +24,8 @@ Route::get('/partidas','GameController@savegames');
 Route::get('/juego',["as" => "gameplay", "uses" => "GameController@tablero"]);
 Route::post('/juego','GameController@playing');
 
+Route::get('/conexion','ConexionController@conexionTabla');
+Route::post('/conexion','ConexionController@buscarCaminos');
+
+Route::get('/conexionall',["as" => "conexionall", "uses" => "ConexionController@todosLosCaminos"]);
+

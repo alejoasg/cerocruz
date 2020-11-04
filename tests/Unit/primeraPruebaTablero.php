@@ -4,33 +4,22 @@ namespace Tests\Unit;
 
 use App\Services\GameService;
 use Tests\TestCase;
+use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 
-class ExampleTest extends TestCase
+class primeraPruebaTablero extends TestCase
 {
     /**
      * A basic test example.
      *
      * @return void
      */
-    public function testBasicTest()
-    {
-        $this->assertTrue(true);
-    }
-
-    public  function test_return_Tablero_new()
+    public  function test_returnTablero()
     {
         $tablero = array_fill(1, 9, '');
 
         $tablero1=GameService::crearMatrizdeJuego();
 
-        $this->assertEquals($tablero,$tablero1);
+        $this->assertEquals(1,$tablero);
     }
-
-
-    public function test_crear_matriz_de_ciudades_con_pesos()
-    {
-        //
-    }
-
 }

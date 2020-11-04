@@ -63,12 +63,14 @@ class GameController extends Controller
 
     public function playing(Request $request)
     {
-        $result=GameService::playingService($request->input());
-        $juego=$result["juego"];
-        $mensaje=$result["mensaje"];
+
+            $result=GameService::playingService($request->input());
+            $juego=$result["juego"];
+            $mensaje=$result["mensaje"];
 
         return view('gameplay')->with(compact('juego'))->with("mensaje", $mensaje);
     }
+
 
 
 }
