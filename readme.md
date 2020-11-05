@@ -9,6 +9,9 @@ password [en blanco]
 igual les mando la BD para que no tengan que correr ningun comando en especifico
 para probar el sistema php artisan serve para levantar el servidor de desarrollo local.
 
+AL sistema se le ha añadido un módulo que simula la solución para una empresa de transporte para reducir costes,se emplea el algoritmo de camino mínimo para encontrar el camino de menos coste entre ciudades,en esta versión solo se muestra con un grafo,en otras versiones se puede incluir otra pestaña para modificar el grafo de ejemplo.
+Para ejecutar el sistema las instrucciones estan justo arriba.
+
 
 <p align="center"><img src="https://laravel.com/assets/img/components/logo-laravel.svg"></p>
 
