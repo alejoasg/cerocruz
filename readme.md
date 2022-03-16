@@ -1,12 +1,10 @@
-Aplicacion que simula el juego Tres con rayas,no esta terminado,me lie con el desarrollo del framework,basicamente me falto el algoritmo de solucion el cual consiste en guardar las posiciones que va marcando cada jugador sea X o 0 y luego comparar con las opciones de gane que son 8,ejemplo si el jugador con las X ha marcado las posiciones 
-1,3,5,7 cuando se compara estas posiciones con las opciones de gana hay un match con una de los ganes el 3,5,7 que es una diagonal en el medio de la matriz,basicamente consiste en buscar en cada jugada esos match pero solo a partir de la 2da jugada ya que se necesitan 3 para ganar y eso agiliza el algoritmo.Ya siento no haber podido terminanr a tiempo y ni siquiera incluir TDD para el algoritmo.
+Aplicacion que simula el juego Tres con rayas.
 Se utilizo php 7.1.33
 WampServer Version 3.2.3 64bit
 Para probar el sistema se necesita wamp como server con MySql como gestor de base de datos,
 BD nombre cero-cruz.
 user root
 password [en blanco]
-igual les mando la BD para que no tengan que correr ningun comando en especifico
 para probar el sistema php artisan serve para levantar el servidor de desarrollo local.
 
 AL sistema se le ha añadido un módulo que simula la solución para una empresa de transporte para reducir costes,se emplea el algoritmo de camino mínimo para encontrar el camino de menos coste entre ciudades,en esta versión solo se muestra con un grafo,en otras versiones se puede incluir otra pestaña para modificar el grafo de ejemplo.
